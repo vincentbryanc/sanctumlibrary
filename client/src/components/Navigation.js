@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Login from './Login';
+import Users from './Users';
 import Error from './Error';
 import { Nav, Navbar } from 'react-bootstrap';
  
@@ -26,6 +27,7 @@ const Navigation = () => {
                     <Route exact path='/home' component={Home}/>
                     <Route exact path='/about' component={About}/>
                     <Route exact path='/login' component={Login}/>
+                    <Route exact path='/users' component={Users}/>
                     <Route component={Error}/>
                 </Switch> 
         </BrowserRouter>
