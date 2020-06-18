@@ -21,11 +21,9 @@ class Login extends Component {
     login(e) {
         e.preventDefault();
         axios.defaults.withCredentials = true;
-        axios.get("http://api.sanctum.com/sanctum/csrf-cookie").then(response => {
-            axios.post("http://api.sanctum.com/api/login", this.state).then(res => {
+        axios.post("http://api.sanctum.com/api/login", this.state).then(res => {
                 console.log(res.data);
             });
-        });
     }
 
     render() {
