@@ -11,7 +11,7 @@ const Navigation = () => {
     return (
         <BrowserRouter>
             <Navbar bg="dark" variant="dark" expand="sm" >
-                <Navbar.Brand as={Link} to="/">React Demo App</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">ReactJS</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
