@@ -4,14 +4,10 @@ import  axios from 'axios';
 class Users extends Component {
 
     state = {
-        isLoading: true,
         users: [],
-        error: null
-    }
-
-    componentDidMount() {
-        this.fetchUsers();
-    }
+        isLoading: true,
+        errors: null
+    };
 
     fetchUsers() {
         const baseURL = process.env.REACT_APP_API_URL;
@@ -22,55 +18,23 @@ class Users extends Component {
         };
         axios.defaults.withCredentials = true;
         axios.get(loginAPIURL, config)
-        .then(res => {
-            console.log(res.data);
-            res.data.map(user => ({
-                name: '${user.email}',
-                email: '${user.email}',
-                role: '${user.role}',
-            }))
-        })
-        .then(users => {
+        .then(response => {
             this.setState({
-                users,
+                users: response.data.data,
                 isLoading: false
             });
-        });
+        })
+        .catch(error => this.setState({ error, isLoading: false }));
     }
 
-    renderTableData() {
-        // return this.state.users.map((user, index) => {
-        //     const { id, name, email, role } = user //destructuring
-        //     return (
-        //        <tr key={id}>
-        //           <td>{name}</td>
-        //           <td>{email}</td>
-        //           <td>{role}</td>
-        //        </tr>
-        //     )
-        // })
+    componentDidMount() {
+        this.fetchUsers();
     }
 
     render() {
         const { isLoading, users } = this.state;
         return (
             <div className='container' style={{ marginTop: "50px" }}>
-                {!isLoading ? (
-                    users.map(user => {
-                        const { id, name, email, role } = user;
-                        return (
-                            <div key={id}>
-                                <p>Name: {name}</p>
-                                <p>Email Address: {email}</p>
-                                <p>Role: {role}</p>
-                                <hr />
-                            </div>
-                        );
-                    })
-                ) : (
-                    // If there is a delay in data, let's let the user know it's loading
-                    <h3>Loading...</h3>
-                )}
                 <div className='row'>
                     <div className='col-md-12'>
                         <div className='card'>
@@ -86,7 +50,20 @@ class Users extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            { this.renderTableData() }
+                                            {!isLoading ? (
+                                                users.map(users => {
+                                                    const { id, name, email, role } = users;
+                                                    return (
+                                                        <tr key={id}>
+                                                            <td>{name}</td>
+                                                            <td>{email}</td>
+                                                            <td>{role}</td>
+                                                        </tr>
+                                                    );
+                                                })
+                                            ) : (
+                                                <tr><td colSpan='3' className='text-center'>Loading...</td></tr>
+                                            )}
                                         </tbody>
                                     </table>
                                 </div>
