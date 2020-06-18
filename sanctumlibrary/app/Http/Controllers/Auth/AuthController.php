@@ -6,14 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
+use Auth;
 
 class AuthController extends Controller
 {
-	public function index(Request $request) {
+	public function index(Request $request) 
+    {
 		return view('auth.login');
 	}
 
-    public function login(Request $request) {
+    public function login(Request $request) 
+    {
         $this->validateLogin($request);
 
         $email = $request->email;
@@ -42,5 +45,11 @@ class AuthController extends Controller
     public function username()
     {
         return 'email';
+    }
+
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+        return redirect('/');
     }
 }

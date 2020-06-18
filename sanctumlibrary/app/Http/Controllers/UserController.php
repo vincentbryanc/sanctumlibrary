@@ -11,8 +11,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->bearerToken());
         return view('backend.users');
     }
 

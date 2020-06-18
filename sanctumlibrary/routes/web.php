@@ -17,9 +17,10 @@ Route::get('/', function () {
     return redirect(url('login'));
 });
 
-Auth::routes(['register'=>false]);
-// Route::get('login', 'Auth\AuthController@index')->name('login');
-// Route::post('login', 'Auth\AuthController@login');
+// Auth::routes(['register'=>false]);
+Route::get('login', 'Auth\AuthController@index')->name('login');
+Route::post('login', 'Auth\AuthController@login');
+Route::post('logout', 'Auth\AuthController@logout')->name('logout');
 
 Route::middleware(['auth:sanctum'])->group(function () {
 	Route::get('users', 'UserController@index');
