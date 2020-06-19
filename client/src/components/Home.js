@@ -4,7 +4,7 @@ const home = () => {
     const token = localStorage.getItem('token');
     return (
        <div>
-            <h1 className='text-center'>{ token }</h1>
+            <h1 className='text-center'>Home</h1>
        </div>
     );
 }
