@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
-import  axios from 'axios';
+import  axiosConfig from '../axiosConfig';
 
 class Login extends Component {
 
@@ -20,10 +20,7 @@ class Login extends Component {
 
     login(e) {
         e.preventDefault();
-        const baseURL = process.env.REACT_APP_API_URL;
-        const loginAPIURL = baseURL + '/api/login';
-        axios.defaults.withCredentials = true;
-        axios.post(loginAPIURL, this.state).then(res => {
+        axiosConfig.post('/api/login', this.state).then(res => {
             if (res.data.errors) {
                 alert('Username / Password field is required');
             }

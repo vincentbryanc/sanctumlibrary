@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  axios from 'axios';
+import  axiosConfig from '../axiosConfig';
 
 class Users extends Component {
 
@@ -10,21 +10,16 @@ class Users extends Component {
     };
 
     fetchUsers() {
-        const baseURL = process.env.REACT_APP_API_URL;
-        const loginAPIURL = baseURL + '/api/users';
-        const token = localStorage.getItem('token');
-        const config = {
-            headers: { Authorization: 'Bearer ' + token }
-        };
-        axios.defaults.withCredentials = true;
-        axios.get(loginAPIURL, config)
+        axiosConfig.get('/api/users')
         .then(response => {
             this.setState({
                 users: response.data.data,
                 isLoading: false
             });
         })
-        .catch(error => this.setState({ error, isLoading: false }));
+        .catch(error => {
+            this.setState({ error, isLoading: false });
+        });
     }
 
     componentDidMount() {
