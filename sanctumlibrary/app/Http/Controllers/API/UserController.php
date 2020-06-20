@@ -45,9 +45,10 @@ class UserController extends Controller
         $role = $request->role;
 
         $rules = array(
-            'name' =>'required|max:255',
-            'email' =>'required|max:255|unique:users',
-            'password' =>'required|max:255',
+            'name' =>'required|max:191',
+            'email' =>'required|max:191|unique:users',
+            'password' =>'required|max:191|min:6',
+            'role' =>'required',
         );
 
         $error = Validator::make($request->all(), $rules);
