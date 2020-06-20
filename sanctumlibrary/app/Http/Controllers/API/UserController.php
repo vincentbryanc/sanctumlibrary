@@ -66,8 +66,9 @@ class UserController extends Controller
             'role' => $role,
         );
 
-        User::create($form_data);
-        return response()->json(['success' => 'Data added successfully.']);
+        $user = User::create($form_data);
+        return new UserResource($user);
+        // return response()->json(['success' => 'Data added successfully.']);
     }
 
     /**
@@ -147,8 +148,9 @@ class UserController extends Controller
             );
         }
 
-        User::where('id', $id)->update($form_data);
-        return response()->json(['success' => 'Data updated successfully.']);
+        $user = User::where('id', $id)->update($form_data);
+        return new UserResource($user);
+        // return response()->json(['success' => 'Data updated successfully.']);
     }
 
     /**
