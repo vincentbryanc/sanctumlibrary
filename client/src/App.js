@@ -1,12 +1,16 @@
-import React from 'react';
-import './App.css';
-
+import React, { Component } from 'react';
 import Navigation from './components/Navigation';
+import { Provider } from 'react-redux';
+import store from './store';
 
-function App() {
-  return (
-    <Navigation />
-  );
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
+    );
+  }
 }
 
 export default App;
