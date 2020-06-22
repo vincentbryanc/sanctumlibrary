@@ -54,6 +54,10 @@ class AuthController extends Controller
         return response($response, 201);
     }
 
+    public function unauthorized() {
+        return response()->json(['error' => 'Unauthenticated.'], 401);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
