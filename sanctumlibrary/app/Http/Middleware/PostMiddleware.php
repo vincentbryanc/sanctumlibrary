@@ -20,12 +20,12 @@ class PostMiddleware
         $post_id = $request->route('post_id');
 
         // check if data exist using id
-        $post_data = Post::select('encoded_by')->where('id', $post_id)->first();
+        $post_data = Post::select('user_id')->where('id', $post_id)->first();
         if (!$post_data) {
             // data not found
             return response()->json(['error' => 'Post not found'], 404);
         }
-        if ($current_user != $post_data->encoded_by)
+        if ($current_user != $post_data->user_id)
         {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

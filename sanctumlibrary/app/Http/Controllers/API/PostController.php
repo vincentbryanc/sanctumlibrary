@@ -40,11 +40,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $content = $request->content;
-        $encoded_by = $request->encoded_by;
+        $user_id = $request->user_id;
 
         $rules = array(
             'content' =>'required|max:191',
-            'encoded_by' =>'required',
+            'user_id' =>'required',
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -57,7 +57,7 @@ class PostController extends Controller
         // preparing data to be saved on database
         $form_data = array(
             'content' => $content,
-            'encoded_by' => $encoded_by,
+            'user_id' => $user_id,
         );
 
         $post = Post::create($form_data);
@@ -72,7 +72,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return new PostResource(Post::find($id));
+        $post_data = Post::where('id', $id)->first();
+        if (!$post_data)
+            return response()->json(['error' => 'Post not found'], 404);
+        else
+            return new PostResource(Post::find($id));
     }
 
     /**

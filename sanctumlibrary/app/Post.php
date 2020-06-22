@@ -11,6 +11,6 @@ class Post extends Model
 	protected $table = 'posts';
     protected $fillable = [
     	'content', 
-    	'encoded_by'
+    	'user_id'
     ];
 }

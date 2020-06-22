@@ -55,7 +55,7 @@ class AuthController extends Controller
     }
 
     public function unauthorized() {
-        return response()->json(['error' => 'Unauthenticated.'], 401);
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
 
     /**
