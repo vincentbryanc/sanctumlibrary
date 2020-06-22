@@ -8,6 +8,8 @@ import Error from './Error';
 import { Nav, Navbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { logout } from '../actions/authActions'
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 class Navigation extends Component {
 
@@ -46,9 +48,8 @@ class Navigation extends Component {
                         <Route path="/home" component={ Home } />
                         <Route path="/about" component={ About } />
 
-                        <Route path="/login" component={ Login } />
-
-                        <Route path="/users" component={ Users } />
+                        <PublicRoute path="/login" component={ Login } />
+                        <PrivateRoute  path="/users" component={ Users } />
                         <Route component={Error}/>
                     </Switch> 
             </Router>

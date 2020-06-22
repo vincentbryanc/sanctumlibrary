@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../actions/userActions';
-import { Redirect } from 'react-router-dom';
 
 class Users extends Component {
 
@@ -11,9 +10,6 @@ class Users extends Component {
     }
 
     render() {
-        if (!this.props.isLoggedIn) {
-            return <Redirect to='/login' />
-        }
 
         const userItems = this.props.users.map(user => (
             <tr key={user.id}>

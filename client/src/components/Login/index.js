@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../../actions/authActions';
-import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 
@@ -42,9 +41,6 @@ class Login extends Component {
     }
 
     render() {
-        if (this.props.isLoggedIn) {
-            return <Redirect to='/users' />
-        }
         return (
             <div className='container'>
                 <div style={{ marginTop: "100px" }}>
