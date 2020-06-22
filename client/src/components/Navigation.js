@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Login from './Login';
+import Posts from './Posts';
 import Users from './Users';
 import Error from './Error';
 import { Nav, Navbar } from 'react-bootstrap';
@@ -36,6 +37,7 @@ class Navigation extends Component {
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                         ) : (
                             <>
+                            <Nav.Link as={Link} to="/posts">Posts</Nav.Link>
                             <Nav.Link as={Link} to="/users">Users</Nav.Link>
                             <Nav.Link onClick={this.logout}>Logout</Nav.Link>
                             </>
@@ -49,6 +51,7 @@ class Navigation extends Component {
                         <Route path="/about" component={ About } />
 
                         <PublicRoute path="/login" component={ Login } />
+                        <PrivateRoute  path="/posts" component={ Posts } />
                         <PrivateRoute  path="/users" component={ Users } />
                         <Route component={Error}/>
                     </Switch> 
