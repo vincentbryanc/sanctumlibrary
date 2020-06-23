@@ -18,7 +18,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return PostResource::collection(Post::all());
+        return PostResource::collection(
+            Post::select('posts.*', 'users.name')
+                ->join('users', 'users.id', '=', 'posts.user_id')
+                ->get()
+        );
     }
 
     /**
@@ -61,7 +65,13 @@ class PostController extends Controller
         );
 
         $post = Post::create($form_data);
-        return new PostResource($post);
+        $id = $post->id; // id of inserted data
+        return new PostResource(
+            Post::select('posts.*', 'users.name')
+                ->join('users', 'users.id', '=', 'posts.user_id')
+                ->where('posts.id', '=', $id)
+                ->get()
+        );
     }
 
     /**
@@ -76,7 +86,12 @@ class PostController extends Controller
         if (!$post_data)
             return response()->json(['error' => 'Post not found'], 404);
         else
-            return new PostResource(Post::find($id));
+            return new PostResource(
+                Post::select('posts.*', 'users.name')
+                    ->join('users', 'users.id', '=', 'posts.user_id')
+                    ->where('posts.id', '=', $id)
+                    ->get()
+            );
     }
 
     /**
@@ -117,8 +132,13 @@ class PostController extends Controller
             'content' => $content,
         );
 
-        $post = Post::where('id', $id)->update($form_data);
-        return new PostResource(Post::find($id));
+        Post::where('id', $id)->update($form_data);
+        return new PostResource(
+            Post::select('posts.*', 'users.name')
+                ->join('users', 'users.id', '=', 'posts.user_id')
+                ->where('posts.id', '=', $id)
+                ->get()
+        );
     }
 
     /**
