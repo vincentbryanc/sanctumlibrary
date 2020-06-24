@@ -49,13 +49,12 @@ export default function(state = initialState, action) {
         case NEW_POST:
             return {
                 ...state,
-                item: action.payload,
+                items: state.items.filter(post => post.id !== action.payload.id).concat(action.payload),
                 createInProgress: false
             }
         case UPDATE_POST:
             return {
                 ...state,
-                // item: action.payload,
                 items: state.items.filter(post => post.id !== action.payload.id).concat(action.payload),
                 updateInProgress: true,
             }

@@ -19,10 +19,8 @@ class Posts extends Component {
             selectedData: {},
             show: false
         }
-        
         this.onChange = this.onChange.bind(this);
     }
-    
 
     componentDidMount() {
         this.props.fetchPosts();
@@ -74,12 +72,6 @@ class Posts extends Component {
         });
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.newPost) {
-            this.props.posts.push(nextProps.newPost);
-        }
-    }
-
     success_alert(title, message, type) {
         Swal.fire(
             title,
@@ -87,22 +79,6 @@ class Posts extends Component {
             type
         )
     }
-
-    // componentDidUpdate(prevProps, prevState, snapshotValue) {
-    //     // if (Object.keys(this.props.newPost).length !== 0) {
-    //     //     console.log('post added');
-    //     //     console.log(this.props.newPost); // post added
-    //     //     console.log('all previous postsd');
-    //     //     console.log(this.props.posts) // all previous posts
-    //     //     this.props.posts.push(this.props.newPost);
-    //     //     console.log('all new posts');
-    //     //     console.log(this.props.posts); // all new posts
-    //     // }
-    //     if (prevProps.posts !== this.state.posts) {
-    //         this.props.posts.push(this.props.newPost);
-    //         console.log(this.props.posts); // all new posts
-    //     }
-    // }
 
     render() {
         const current_user_id = JSON.parse(localStorage.getItem('user')).id;

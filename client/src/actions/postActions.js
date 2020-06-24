@@ -25,7 +25,11 @@ export const fetchPosts = () => dispatch=> {
 
 export const createPost = postData => dispatch => {
     dispatch({ type: CREATE_IN_PROGRESS });
-    axiosConfig.post('/api/post', postData)
+    axiosConfig.post('/api/post', postData, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        })
         .then(post => dispatch({
             type: NEW_POST,
             payload: post.data.data
