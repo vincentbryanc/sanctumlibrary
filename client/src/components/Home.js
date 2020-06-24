@@ -1,7 +1,7 @@
 import React from 'react';
 function Home() {
     return (
-        <div>
+        <div className='container'>
              <h1 className='text-center'>Home</h1>
         </div>
      );

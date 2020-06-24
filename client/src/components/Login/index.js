@@ -43,26 +43,24 @@ class Login extends Component {
     render() {
         return (
             <div className='container'>
-                <div style={{ marginTop: "100px" }}>
-                    <div className='row'>
-                        <div className='col-md-6 offset-md-3'>
-                            <div className='card'>
-                                <div className='card-body'>
-                                    <form onSubmit={this.onSubmit}>
-                                        <h3 className='text-center'>Login to Continue</h3>
-                                        <div className='form-group'>
-                                            <label>Email Address</label>
-                                            <input type='text' name="email" className='form-control' placeholder="Email Address" value={this.state.email} onChange={this.onChange} />
-                                        </div>
-                                        <div className='form-group'>
-                                            <label>Password</label>
-                                            <input type='password' name="password" className='form-control' placeholder="Passowrd" value={this.state.password} onChange={this.onChange} />
-                                        </div>
-                                        <div className='form-group'>
-                                            <input type='submit' className='btn btn-primary btn-block' value='Login' />
-                                        </div>
-                                    </form>
-                                </div>
+                <div className='row'>
+                    <div className='col-md-6 offset-md-3'>
+                        <div className='card'>
+                            <div className='card-body'>
+                                <form onSubmit={this.onSubmit}>
+                                    <h3 className='text-center'>Login to Continue</h3>
+                                    <div className='form-group'>
+                                        <label>Email Address</label>
+                                        <input type='text' name="email" className='form-control' placeholder="Email Address" value={this.state.email} onChange={this.onChange} />
+                                    </div>
+                                    <div className='form-group'>
+                                        <label>Password</label>
+                                        <input type='password' name="password" className='form-control' placeholder="Passowrd" value={this.state.password} onChange={this.onChange} />
+                                    </div>
+                                    <div className='form-group'>
+                                        <input type='submit' className='btn btn-primary btn-block' value='Login' />
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

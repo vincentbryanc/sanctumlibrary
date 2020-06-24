@@ -26,7 +26,7 @@ class Navigation extends Component {
     render() {
         return (
             <Router>
-                <Navbar bg="dark" variant="dark" expand="sm" >
+                <Navbar bg="dark" variant="dark" expand="sm" fixed="top">
                     <Navbar.Brand as={Link} to="/">ReactJS</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">

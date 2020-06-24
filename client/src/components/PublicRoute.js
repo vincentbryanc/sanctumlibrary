@@ -6,7 +6,7 @@ const PublicRoute = ({isLoggedIn, component: Component, ...rest}) => {
     return (
         <Route {...rest} render={props => (
             isLoggedIn ?
-                <Redirect to="/users" />  
+                <Redirect to="/posts" />  
             : <Component {...props} />
         )} />
     );

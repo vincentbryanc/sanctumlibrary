@@ -20,7 +20,7 @@ class Users extends Component {
         ));
 
         return (
-            <div className='container' style={{ marginTop: "50px" }}>
+            <div className='container' style={{ marginTop: "120px", marginBottom: "20px" }}>
                 <div className='row'>
                     <div className='col-md-12'>
                         <div className='card'>
@@ -36,7 +36,7 @@ class Users extends Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {userItems}
+                                            { userItems }
                                         </tbody>
                                     </table>
                                 </div>
